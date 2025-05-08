@@ -12,7 +12,7 @@ It has been tested on **Ubuntu 24.04**.
 ## Installation
 
 ```bash
-sudo apt update && rm -rf install.py && wget -qO install.py https://raw.githubusercontent.com/amidevous1/Xtream-Ui/refs/heads/main/install.py && sudo python3 install.py
+sudo apt update && sudo apt -y dist-upgrade && rm -rf install.py && wget -qO install.py https://raw.githubusercontent.com/amidevous1/Xtream-Ui/refs/heads/main/install.py && sudo python3 install.py
 ```
 
 ## Acknowledgements
