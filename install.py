@@ -120,13 +120,13 @@ def prepare(rType="MAIN"):
 
     if not python_installed or not pip_installed or not paramiko_installed:
         printc("Installing python2 & pip2 & paramiko...")
-        subprocess.run("sudo apt install -y build-essential checkinstall libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev wget tar > /dev/null 2>&1", shell=True)
+        subprocess.run("sudo apt install -y python3 python3-pip build-essential checkinstall libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev wget tar > /dev/null 2>&1", shell=True)
 
         if not python_installed:
-            subprocess.run("cd /usr/src && wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz > /dev/null 2>&1 && tar xzf Python-2.7.18.tgz > /dev/null 2>&1 && cd Python-2.7.18 && ./configure --enable-optimizations > /dev/null 2>&1 && sudo make altinstall > /dev/null 2>&1", shell=True)
+            subprocess.run("cd /usr/src && wget https://github.com/amidevous1/Xtream-Ui/releases/download/download/python2.7-2.7.18-noble-amd64.deb -O /usr/src/python2.7-2.7.18-noble-amd64.deb > /dev/null 2>&1 && dpkg -i /usr/src/python2.7-2.7.18-noble-amd64.deb  > /dev/null 2>&1", shell=True)
 
         if not pip_installed:
-            subprocess.run("curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py > /dev/null 2>&1 && sudo python2.7 get-pip.py > /dev/null 2>&1", shell=True)
+            subprocess.run("curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2.7 get-pip.py > /dev/null 2>&1", shell=True)
 
         if not paramiko_installed:
             subprocess.run("pip2.7 install paramiko > /dev/null 2>&1", shell=True)
