@@ -6,7 +6,7 @@ from zipfile import ZipFile
 from urllib.request import Request, urlopen
 from urllib.error import URLError, HTTPError
 
-rDownloadURL = {"main": "https://bitbucket.org/masoudgb/xtream-ui/raw/master/main_xui_masoudgb.zip", "sub": "https://bitbucket.org/masoudgb/xtream-ui/raw/master/sub_xui_masoudgb.zip"}
+rDownloadURL = {"main": "https://github.com/amidevous1/Xtream-Ui/releases/download/download/main_xui_masoudgb.zip", "sub": "https://bitbucket.org/masoudgb/xtream-ui/raw/master/sub_xui_masoudgb.zip"}
 import os
 rPackages = ["libcurl4", "libxslt1-dev", "libgeoip-dev", "libonig-dev", "e2fsprogs", "wget", "mcrypt", "nscd", "htop", "zip", "unzip", "mc", "mariadb-server", "libpng16-16", "python3-paramiko", "python-is-python3"]
 rInstall = {"MAIN": "main", "LB": "sub"}
