@@ -17,7 +17,7 @@ def install_libzip5():
     if not is_installed("libzip5"):
         print("Installing libzip5")
         try:
-            subprocess.run("wget http://archive.ubuntu.com/ubuntu/pool/universe/libz/libzip/libzip5_1.5.1-0ubuntu1_amd64.deb -q", shell=True, check=True)
+            subprocess.run("wget https://github.com/amidevous1/Xtream-Ui/releases/download/download/libzip5_1.5.1-0ubuntu1_amd64.deb -q", shell=True, check=True)
             subprocess.run("dpkg -i libzip5_1.5.1-0ubuntu1_amd64.deb -q", shell=True, check=True)
             subprocess.run("rm libzip5_1.5.1-0ubuntu1_amd64.deb", shell=True, check=True)  # Clean up
         except subprocess.CalledProcessError as e:
