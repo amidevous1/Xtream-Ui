@@ -91,10 +91,10 @@ def prepare(rType="MAIN"):
     if rType == "MAIN":
         printc("Install MariaDB 11.5 repository")
         subprocess.run("apt-get install -y software-properties-common wget curl > /dev/null 2>&1", shell=True)
-        subprocess.run("mkdir -p /usr/share/keyrings/ > /dev/null 2>&1", shell=True)
-        subprocess.run("curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor -o /usr/share/keyrings/mariadb-archive-keyring.gpg > /dev/null 2>&1", shell=True)
+        subprocess.run("mkdir -p /etc/apt/trusted.gpg.d/ > /dev/null 2>&1", shell=True)
+        subprocess.run("curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/mariadb-archive-keyring.gpg > /dev/null 2>&1", shell=True)
         subprocess.run(
-            "echo 'deb [arch=amd64,arm64,ppc64el,s390x] [signed-by=/usr/share/keyrings/mariadb-archive-keyring.gpg] https://archive.mariadb.org/mariadb-11.5/repo/ubuntu noble main' > /etc/apt/sources.list.d/mariadb.list > /dev/null 2>&1",
+            "echo 'deb [arch=amd64,arm64,ppc64el,s390x] https://archive.mariadb.org/mariadb-11.5/repo/ubuntu noble main' > /etc/apt/sources.list.d/mariadb.list > /dev/null 2>&1",
             shell=True
         )
         subprocess.run("apt-get update > /dev/null 2>&1", shell=True)
