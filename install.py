@@ -89,7 +89,7 @@ def prepare(rType="MAIN"):
     subprocess.run("apt-get -y dist-upgrade > /dev/null 2>&1", shell=True)
 
     if rType == "MAIN":
-        printc("Install MariaDB 11.5 repository")
+        printc("Install MariaDB 11.4 repository")
         subprocess.run("apt-get install -y software-properties-common wget curl > /dev/null 2>&1", shell=True)
         subprocess.run("mkdir -p /usr/share/keyrings/ > /dev/null 2>&1", shell=True)
         subprocess.run("curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor -o /usr/share/keyrings/mariadb-archive-keyring.gpg > /dev/null 2>&1", shell=True)
