@@ -94,7 +94,7 @@ def prepare(rType="MAIN"):
         subprocess.run("mkdir -p /usr/share/keyrings/ > /dev/null 2>&1", shell=True)
         subprocess.run("curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor -o /usr/share/keyrings/mariadb-archive-keyring.gpg > /dev/null 2>&1", shell=True)
         subprocess.run(
-            "echo y | sudo add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el,s390x] [signed-by=/usr/share/keyrings/mariadb-archive-keyring.gpg] https://archive.mariadb.org/mariadb-11.5/repo/ubuntu noble main' > /dev/null 2>&1",
+            "echo 'deb [arch=amd64,arm64,ppc64el,s390x] [signed-by=/usr/share/keyrings/mariadb-archive-keyring.gpg] https://archive.mariadb.org/mariadb-11.5/repo/ubuntu noble main' > /etc/apt/sources.list.d/mariadb.list > /dev/null 2>&1",
             shell=True
         )
         subprocess.run("apt-get update > /dev/null 2>&1", shell=True)
