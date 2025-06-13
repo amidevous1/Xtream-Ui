@@ -181,7 +181,7 @@ def install(rType="MAIN"):
 
 def update(rType="MAIN"):
     if rType == "UPDATE":
-        rlink = "https://bitbucket.org/masoudgb/xtream-ui/raw/master/update.zip"
+        rlink = "https://github.com/amidevous1/Xtream-Ui/releases/download/download/update.zip"
     else:
         rlink = "https://bitbucket.org/masoudgb/xtream-ui/raw/master/release_22f.zip"
         printc("Downloading Software Update")  
