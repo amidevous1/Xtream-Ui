@@ -91,10 +91,10 @@ def prepare(rType="MAIN"):
     if rType == "MAIN":
         printc("Install MariaDB 11.5 repository")
         subprocess.run("apt-get install -y software-properties-common wget curl > /dev/null 2>&1", shell=True)
-        subprocess.run("mkdir -p /usr/share/keyrings/ > /dev/null 2>&1", shell=True)
-        subprocess.run("curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor -o /usr/share/keyrings/mariadb-archive-keyring.gpg > /dev/null 2>&1", shell=True)
+        subprocess.run("mkdir -p /etc/apt/trusted.gpg.d/ > /dev/null 2>&1", shell=True)
+        subprocess.run("curl -fsSL https://mariadb.org/mariadb_release_signing_key.asc | gpg --dearmor -o /etc/apt/trusted.gpg.d/mariadb-archive-keyring.gpg > /dev/null 2>&1", shell=True)
         subprocess.run(
-            "echo y | sudo add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el,s390x] [signed-by=/usr/share/keyrings/mariadb-archive-keyring.gpg] https://archive.mariadb.org/mariadb-11.5/repo/ubuntu noble main' > /dev/null 2>&1",
+            "echo y | sudo add-apt-repository -y 'deb [arch=amd64,arm64,ppc64el,s390x] https://archive.mariadb.org/mariadb-11.5/repo/ubuntu noble main' > /dev/null 2>&1",
             shell=True
         )
         subprocess.run("apt-get update > /dev/null 2>&1", shell=True)
@@ -120,13 +120,13 @@ def prepare(rType="MAIN"):
 
     if not python_installed or not pip_installed or not paramiko_installed:
         printc("Installing python2 & pip2 & paramiko...")
-        subprocess.run("sudo apt install -y python3 python3-pip build-essential checkinstall libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev wget tar > /dev/null 2>&1", shell=True)
+        subprocess.run("sudo apt install -y build-essential checkinstall libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev wget tar > /dev/null 2>&1", shell=True)
 
         if not python_installed:
-            subprocess.run("cd /usr/src && wget https://github.com/amidevous1/Xtream-Ui/releases/download/download/python2.7-2.7.18-noble-amd64.deb -O /usr/src/python2.7-2.7.18-noble-amd64.deb > /dev/null 2>&1 && dpkg -i /usr/src/python2.7-2.7.18-noble-amd64.deb  > /dev/null 2>&1", shell=True)
+            subprocess.run("cd /usr/src && sudo wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz > /dev/null 2>&1 && sudo tar xzf Python-2.7.18.tgz > /dev/null 2>&1 && cd Python-2.7.18 && sudo ./configure --enable-optimizations > /dev/null 2>&1 && sudo make altinstall > /dev/null 2>&1", shell=True)
 
         if not pip_installed:
-            subprocess.run("curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py > /dev/null 2>&1 && python2.7 get-pip.py > /dev/null 2>&1", shell=True)
+            subprocess.run("curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py > /dev/null 2>&1 && sudo python2.7 get-pip.py > /dev/null 2>&1", shell=True)
 
         if not paramiko_installed:
             subprocess.run("pip2.7 install paramiko > /dev/null 2>&1", shell=True)
